@@ -5,6 +5,8 @@ Based on the past user behavior, MoRe recommends the movies to users based on th
 ## Using cosine similarity
 Cosine Similarity
 Cosine similarity is a metric used to measure how similar two items are. Mathematically it calculates the cosine of the angle between two vectors projected in a multidimensional space. Cosine similarity is advantageous when two similar documents are far apart by Euclidean distance(size of documents) chances are they may be oriented closed together. The smaller the angle, higher the cosine similarity.
+![image](https://user-images.githubusercontent.com/92110239/170874251-da93fc88-8ad9-4f91-99d0-24612b447e18.png)
+
 1 - cosine-similarity = cosine-distance
 ## Installation/Environment Setup
 
