@@ -25,9 +25,13 @@ conn = sqlite3.connect('data.db')
 c = conn.cursor()
 
 
+# function to  create username and password
+
 def create_usertable():
 	c.execute('CREATE TABLE IF NOT EXISTS userstable(username TEXT, password TEXT)')
 
+
+# function to add userdata
 
 def add_userdata(username, password):
 	c.execute('INSERT INTO userstable(username,password) VALUES (?,?)', (username, password))
@@ -44,6 +48,8 @@ with open('style.css') as f:
 	st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
 
+# function to fetch_movie-poster
+
 def fetch_poster(movie_id):
     url = "https://api.themoviedb.org/3/movie/{}?api_key=ff87a08588cf890748016a3047c27781".format(movie_id)
     data = requests.get(url)
@@ -53,6 +59,8 @@ def fetch_poster(movie_id):
     return full_path
 
 
+#function to fetch the data of a required movie
+
 def fetch_data(movie_id):
 
     url = "https://api.themoviedb.org/3/movie/{}?api_key=ff87a08588cf890748016a3047c27781".format(movie_id)
@@ -60,6 +68,7 @@ def fetch_data(movie_id):
     data = data.json()
     return data
 
+#function to get the recommended movies
 
 def recommend(movie):
     index = movies[movies['title'] == movie].index[0]
@@ -68,7 +77,6 @@ def recommend(movie):
     recommended_movie_posters = []
     recommended_movie_release = []
     for i in distances[1:6]:
-        # fetch the movie poster
         movie_id = movies.iloc[i[0]].movie_id
         recommended_movie_posters.append(fetch_poster(movie_id))
         recommended_movie_names.append(movies.iloc[i[0]].title)
@@ -77,14 +85,13 @@ def recommend(movie):
     return recommended_movie_names, recommended_movie_posters, recommended_movie_release
 
 
+# showing particular details of movie such as releaseData, vote_avg
+
 def show_details(data):
 	rel_date = data['release_date']
 	vote_avg = data['vote_average']
 	cap = "Released:{} \n ({}/10) ".format(rel_date, vote_avg)
 	return cap
-
-
-
 
 def main():
 	st.title("Movie Recommendation System")
@@ -113,7 +120,7 @@ def main():
 					"Type or select a movie from the dropdown",
 					movie_list
 				)
-
+				#collecting recommendations
 				if st.button('Show Recommendation'):
 					recommended_movie_names, recommended_movie_posters, recommended_movie_data = recommend(selected_movie)
 					col1, col2, col3, col4, col5 = st.columns(5)
