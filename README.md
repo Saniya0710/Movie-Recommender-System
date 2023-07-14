@@ -1,7 +1,7 @@
 
 # Movie Recommender System
 
-Based on the past user behavior, MoRe recommends the movies to users based on their similarity. It suggests movies to users with a recommendation rate that is greater than the preference rate of movie for the same user
+Based on the past user behavior, Movie Recommender System recommends the movies to users based on their similarity. It suggests movies to users with a recommendation rate that is greater than the preference rate of movie for the same user
 ## Using cosine similarity
 Cosine Similarity
 Cosine similarity is a metric used to measure how similar two items are. Mathematically it calculates the cosine of the angle between two vectors projected in a multidimensional space. Cosine similarity is advantageous when two similar documents are far apart by Euclidean distance(size of documents) chances are they may be oriented closed together. The smaller the angle, higher the cosine similarity.
